@@ -1,0 +1,24 @@
+{
+  "name": "rlssoverlay",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "start:all": "concurrently -n BACKEND,OVERLAY,CONTROL -c blue,green,magenta \"node server.js\" \"npm run dev\" \"npm run dev --prefix ../RLSSOverlayControlPanel\"",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^3.0.2",
+    "concurrently": "^9.2.0",
+    "svelte": "^4.2.12",
+    "vite": "^5.2.0"
+  },
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "ws": "^8.18.2"
+  }
+}
