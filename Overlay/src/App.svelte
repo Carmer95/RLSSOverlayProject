@@ -65,7 +65,7 @@
             </div>
           {/if}
 
-          <h1>RLSS</h1>
+          <div class="rlss-logo"></div>
 
           <div class="statfeed-clip">
             <div class="statfeed-stack">
@@ -212,10 +212,15 @@ main {
   width: 100%;
 }
 
-h1 {
+.rlss-logo {
   position: absolute;
-  top: -20px;
-  left: 1500px;
+  top: 10px;
+  left: 1480px;
+  height: 50px;
+  width: 100px;
+  background-image: url('./assets/RLSSLogo.png');
+  background-position: 50% 40%;
+  background-size: 100px 50px;
 }
   
 li {
@@ -247,42 +252,7 @@ li {
     position: relative;
     width: 1920px;
     height: 1080px;
-    pointer-events: none; /* optional: allows clicks to pass through */
 }
-
-/* .demo-icon {
-  position: absolute;
-  top: 10px;
-  width: 24px;
-  height: 24px;
-  z-index: 5;
-}
-
-.demo-icon.left {
-  left: 260px; 
-}
-
-.demo-icon.right {
-  right: 260px; 
-}
-
-.demo-icon img {
-  width: 100%;
-  height: 100%;
-  filter: drop-shadow(0 0 6px red);
-  animation: popIn 0.3s ease-out;
-}
-
-@keyframes popIn {
-  0% {
-    transform: scale(0.5);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-} */
 
 .demolished-name {
   opacity: 0.5;
@@ -319,7 +289,7 @@ li {
 .s-name {
   margin: 0px;
   position: relative;
-  font-size: 25px;
+  font-size: 20px;
   text-shadow: 0 0 5px #000000, 0 0 10px #000000, 0 0 3px #000000;
   top: 16px;
   font-family: "Exo 2", sans-serif;

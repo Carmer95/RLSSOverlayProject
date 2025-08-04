@@ -5,24 +5,24 @@ const { startWebSocketServer } = require("./server.cjs");
 async function main() {
   startWebSocketServer(1234);
 
-  console.log("🚀 RLSS Overlay starting... Connect OBS to web-source 'http://localhost:5001'");
+  console.log("🚀 RLSS Overlay starting... Connect OBS to web-source 'http://localhost:1111'");
 
-  // Overlay app on 5001
+  // Overlay app on 1111
   const overlayApp = express();
   overlayApp.use(express.static(path.join(__dirname, "Overlay", "dist")));
 
   // Serve logos from ./TeamLogos
   overlayApp.use("/TeamLogos", express.static(path.join(process.cwd(), "TeamLogos")));
 
-  overlayApp.listen(5001, () => {
-    console.log("Overlay running at http://localhost:5001");
+  overlayApp.listen(1111, () => {
+    console.log("Overlay running at http://localhost:1111");
   });
 
-  // Control panel app on 5173
+  // Control panel app on 1112
   const controlApp = express();
   controlApp.use(express.static(path.join(__dirname, "ControlPanel", "dist")));
-  controlApp.listen(5173, () => {
-    console.log("Control Panel running at http://localhost:5173");
+  controlApp.listen(1112, () => {
+    console.log("Control Panel running at http://localhost:1112");
   });
 
   // Only try to open the browser if NOT running as pkg executable
@@ -31,13 +31,13 @@ async function main() {
     const openModule = await import("open");
     const open = openModule.default;
     try {
-      await open("http://localhost:5173");
+      await open("http://localhost:1112");
     } catch (err) {
       console.warn("Could not auto-open browser:", err);
     }
   } else {
     // Inform user to open browser manually in packaged exe
-    console.log("Please open http://localhost:5173 manually in your browser.");
+    console.log("Please open http://localhost:1112 manually in your browser.");
   }
 }
 

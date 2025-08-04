@@ -51,8 +51,8 @@
   }
 
   function nameSizeClass(name) {
-    if (name.length > 20) return 'name-longest';
-    if (name.length > 13) return 'name-long';
+    if (name.length > 15) return 'name-longest';
+    if (name.length > 8) return 'name-long';
     return 'name-normal';
   }
 
@@ -234,7 +234,7 @@
 
   .name-normal {
     font-size: 34px;
-    max-width: 275px;
+    max-width: 265px;
     overflow: visible;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -244,7 +244,7 @@
 
   .name-long {
     font-size: 20px;
-    max-width: 275px;
+    max-width: 265px;
     overflow: visible;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -253,8 +253,8 @@
   }
 
   .name-longest {
-    font-size: 20px;
-    max-width: 275px;
+    font-size: 18px;
+    max-width: 265px;
     overflow: visible;
     text-overflow: ellipsis;
     white-space: nowrap;

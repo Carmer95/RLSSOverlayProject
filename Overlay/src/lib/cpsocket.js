@@ -14,7 +14,7 @@ export const panelDataStore = writable({
   startSeries: false,
   seriesOver: false,
   seriesInfo: '', 
-  overlayVisible: false,
+  overlayVisible: null,
 });
 
 export const panelSocketStatus = writable("disconnected");
