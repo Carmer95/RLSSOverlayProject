@@ -16,7 +16,7 @@
 
   // Connect to the WebSocket server to get live updates
   function connectWebSocket() {
-    ws = new WebSocket('ws://localhost:1113');
+    ws = new WebSocket('ws://localhost:1234');
 
     ws.onopen = () => {
       console.log('WebSocket connected to panel data server');

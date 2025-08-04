@@ -22,7 +22,7 @@ export const panelSocketStatus = writable("disconnected");
 export let controlSocket;
 
 function connectWebSocket() {
-  controlSocket = new WebSocket("ws://localhost:1113");
+  controlSocket = new WebSocket("ws://localhost:1234");
 
   controlSocket.onopen = () => {
     console.log("[Panel WS] Connected");

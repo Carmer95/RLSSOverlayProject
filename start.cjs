@@ -10,6 +10,10 @@ async function main() {
   // Overlay app on 5001
   const overlayApp = express();
   overlayApp.use(express.static(path.join(__dirname, "Overlay", "dist")));
+
+  // Serve logos from ./TeamLogos
+  overlayApp.use("/TeamLogos", express.static(path.join(process.cwd(), "TeamLogos")));
+
   overlayApp.listen(5001, () => {
     console.log("Overlay running at http://localhost:5001");
   });
