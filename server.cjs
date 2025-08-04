@@ -14,7 +14,7 @@ function startWebSocketServer(port = 1234) {
     startSeries: false,
     seriesOver: false,
     seriesInfo: "",
-    overlayVisible: false,
+    overlayVisible: null,
   };
 
   const server = http.createServer();
@@ -112,7 +112,7 @@ function startWebSocketServer(port = 1234) {
             orangeWins: 0,
             startSeries: false,
             seriesOver: false,
-            overlayVisible: false,
+            overlayVisible: null,
           };
           changed = true;
         }
