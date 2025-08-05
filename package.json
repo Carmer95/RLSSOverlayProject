@@ -2,15 +2,10 @@
   "name": "rlss-overlay-project",
   "version": "1.0.0",
   "description": "Rocket League SOS Overlay and Control Panel",
-  "main": "start.cjs",
+  "main": "main.js",
   "scripts": {
-    "install:all": "npm install --prefix Overlay && npm install --prefix ControlPanel",
-    "dev": "concurrently \"vite --config Overlay/vite.config.js\" \"vite --config ControlPanel/vite.config.js\"",
-    "build": "npm run build:overlay && npm run build:controlpanel",
-    "build:overlay": "vite build --config Overlay/vite.config.js",
-    "build:controlpanel": "vite build --config ControlPanel/vite.config.js",
-    "start": "node start.cjs",
-    "package": "pkg . --out-path ."
+    "dev": "electron .",
+    "build": "electron-builder"
   },
   "bin": "start.cjs",
   "author": "Dakota Carmer",
@@ -22,18 +17,32 @@
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
+    "electron": "^37.2.5",
+    "electron-builder": "^26.0.12",
     "pkg": "^5.8.1",
     "vite": "^5.2.0"
   },
-  "pkg": {
-    "scripts": ["start.cjs"],
-    "assets": [
-      "Overlay/dist/**",
-      "ControlPanel/dist/**"
+   "build": {
+    "appId": "com.rlss.overlay",
+    "productName": "RLSS Overlay Launcher",
+    "files": [
+      "Overlay/dist",
+      "ControlPanel/dist",
+      "main.js",
+      "server.cjs",
+      "start.cjs",
+      "RLSS_Icon.ico"
     ],
-    "targets": [
-      "node18-win-x64"
-    ]
+    "extraResources": [
+      {
+        "from": "TeamLogos",
+        "to": "TeamLogos"
+      }
+    ],
+    "win": {
+      "target": "portable",
+      "icon": "RLSS_Icon.ico"
+    }
   },
   "engines": {
     "node": ">=18.0.0"
