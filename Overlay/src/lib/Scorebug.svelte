@@ -57,7 +57,7 @@
 
     <!-- Blue Side -->
     <div class="blue-logo">
-      <img class="blueLogo" src={`/TeamLogos/${panel.blueLogo || 'RLStockLogo.png'}`} alt="Blue Logo" width="80" height="80" />
+      <img src={`http://localhost:1111/TeamLogos/${panel.blueLogo || 'RLStockLogo.png'}`} alt="Blue Logo" width="80" height="80" />
     </div>
     <div class="blue-info">
       <div class="{blueNameClass}">{blueDisplayName}</div>
@@ -87,7 +87,7 @@
       <div class="{orangeNameClass}">{orangeDisplayName}</div>
     </div>
     <div class="orange-logo">
-      <img class="orangeLogo" src={`/TeamLogos/${panel.orangeLogo || 'RLStockLogo.png'}`} alt="Orange Logo" width="80" height="80" />
+      <img src={`http://localhost:1111/TeamLogos/${panel.orangeLogo || 'RLStockLogo.png'}`} alt="Orange Logo" width="80" height="80" />
     </div>
   </div>
 
