@@ -75,7 +75,7 @@ cd ControlPanel
 npm install
 ```
 
-## ✏️ ** TEAM LOGOS **
+## ✏️ TEAM LOGOS
 
 To input custom team logos, first ensure the logo is a .png. 
 A transparent background is recommended. 
