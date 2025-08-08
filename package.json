@@ -7,7 +7,6 @@
     "dev": "electron .",
     "build": "electron-builder"
   },
-  "bin": "start.cjs",
   "author": "Dakota Carmer",
   "license": "MIT",
   "dependencies": {
@@ -19,7 +18,6 @@
     "concurrently": "^8.2.2",
     "electron": "^37.2.5",
     "electron-builder": "^26.0.12",
-    "pkg": "^5.8.1",
     "vite": "^5.2.0"
   },
    "build": {
@@ -30,7 +28,6 @@
       "ControlPanel/dist",
       "main.js",
       "server.cjs",
-      "start.cjs",
       "RLSS_Icon.ico"
     ],
     "extraResources": [
