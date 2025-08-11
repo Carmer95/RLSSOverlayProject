@@ -77,8 +77,8 @@ npm install
 
 ## ✏️ TEAM LOGOS
 
-To input custom team logos, first ensure the logo is a .png. 
-A transparent background is recommended. 
+To input custom team logos, first ensure the logo is a .png. [x to PNG Converter](https://onlinepngtools.com/#tools)
+A transparent background is recommended, as well as a circular format. [CircleCrop](https://crop-circle.imageonline.co/)
 
 Once you have the properly formatted logo, place it in the /RLSSOverlayProject/TeamLogos directory. 
 
