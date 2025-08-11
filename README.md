@@ -43,7 +43,7 @@ The SOS plugin allows game data to be sent from Rocket League to the overlay via
   - sos.set in x:\Users\xxx\AppData\Roaming\bakkesmod\bakkesmod\plugins\settings
 
 
-After following these steps, the SOS plugin should be successfully installed and ready to use with Bakkesmod. Verify in the BakkesMod Menu by pressing
+These are my directories, however, in the BakkesMod injector you can simply select "File" then "Open BakkesMod folder". After following these steps, the SOS plugin should be successfully installed and ready to use with Bakkesmod. Verify in the BakkesMod Menu by pressing
 f2 and opening the pluginmanager. Ensure Simple Overlay System - SOS.dll is checked. You may need to relaunch Rocket League and/or BakkesMod.
 
 ### 1. Download the App
