@@ -21,8 +21,9 @@ Prerequisites for users and devs:
 - [BakkesMod](https://www.bakkesmod.com/)
 - [SOS Plugin](https://gitlab.com/bakkesplugins/sos/sos-plugin)
 
+---
 
-Install the BakkesMod for Rocket League:
+Install BakkesMod for Rocket League:
 
 - Download Bakkesmod from the official website. Extract the zip and run the .exe. Bakkesmod is required to run custom broadcast overlays in Rocket League. 
 
