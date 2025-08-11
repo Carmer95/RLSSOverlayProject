@@ -18,22 +18,19 @@ A custom overlay made for the Rocket League Splash Series and a Control Panel, p
 
 Prerequisites for users and devs: 
 - Rocket League (Steam or Epic Games)
-- BakkesMod
-- SOS Plugin
+- [BakkesMod](https://www.bakkesmod.com/)
+- [SOS Plugin](https://gitlab.com/bakkesplugins/sos/sos-plugin)
 
 
 Install the BakkesMod for Rocket League:
 
 - Download Bakkesmod from the official website. Extract the zip and run the .exe. Bakkesmod is required to run custom broadcast overlays in Rocket League. 
 
-[BakkesMod](https://www.bakkesmod.com/)
-
 
 Install the SOS plugin in Rocket League:
 
 - Ensure Bakkesmod is installed, then download the sos-plugin.
 
-[SOS Plugin](https://gitlab.com/bakkesplugins/sos/sos-plugin). 
 
 The SOS plugin allows game data to be sent from Rocket League to the overlay via web socket connection.
 
