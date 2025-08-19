@@ -47,6 +47,8 @@
   $: orangeScoreLeft = $orangeTeam.score >= 10 ? '564px' : '576px';
   $: blueScoreRight = $blueTeam.score >= 10 ? '564px' : '576px';
 
+  $: timeClass = formatTime($timeSeconds).length > 4 ? "otTime four-digit" : "otTime";
+
 </script>
 
 <div transition:fade class="top-bar">
@@ -57,7 +59,11 @@
 
     <!-- Blue Side -->
     <div class="blue-logo">
-      <img src={`http://localhost:1111/TeamLogos/${panel.blueLogo || 'RLStockLogo.png'}`} alt="Blue Logo" width="80" height="80" />
+      <img src={`http://localhost:1111/TeamLogos/${panel.blueLogo || 'RLStockLogo.png'}`} 
+      alt="Blue Logo" 
+      width="80" 
+      height="80" 
+      class={(panel.blueLogo || 'RLStockLogo.png') === 'RLStockLogo.png' ? 'stock-logo' : ''} />
     </div>
     <div class="blue-info">
       <div class="{blueNameClass}">{blueDisplayName}</div>
@@ -72,7 +78,7 @@
       {#if isPostGame}
         <PostGameTimer />
       {:else if $isOT}
-        <div class="otTime">+{formatTime($timeSeconds)}</div>
+        <div class="{timeClass}">+{formatTime($timeSeconds)}</div>
       {:else}
         <div class="time">{formatTime($timeSeconds)}</div>
       {/if}
@@ -87,7 +93,11 @@
       <div class="{orangeNameClass}">{orangeDisplayName}</div>
     </div>
     <div class="orange-logo">
-      <img src={`http://localhost:1111/TeamLogos/${panel.orangeLogo || 'RLStockLogo.png'}`} alt="Orange Logo" width="80" height="80" />
+      <img src={`http://localhost:1111/TeamLogos/${panel.orangeLogo || 'RLStockLogo.png'}`} 
+      alt="Orange Logo" 
+      width="80" 
+      height="80" 
+      class={(panel.orangeLogo || 'RLStockLogo.png') === 'RLStockLogo.png' ? 'stock-logo' : ''} />
     </div>
   </div>
 
@@ -103,6 +113,8 @@
     <div class="details">
       {#if $postGameVisible}
         Game Over
+      {:else if $isOT}
+        <p class="ot-info">OVERTIME</p>
       {:else}
         Game {currentGame ?? '1'} | Best of {panel.bestOf ?? '1'}
       {/if}
@@ -134,12 +146,9 @@
         justify-content: center;
     }
 
-    .blueLogo {
-        object-fit: contain;
-    }
-
-    .orangeLogo {
-        object-fit: contain;
+    .stock-logo {
+      width: 80px;
+      max-height: 50px;
     }
 
     .blue-logo {
@@ -172,7 +181,7 @@
         flex-direction: column;
         font-family: "Nosifer", serif;
         color: white;
-        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, 0px 1px 0 #000, 1px 0px 0 #000;
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, 1px 1px 0 #000, 1px 1px 0 #000;
         margin-top: 2px;
     }
 
@@ -233,71 +242,32 @@
 
     .time {
         position:absolute;
-        top: 32px;
+        top: 18px;
+        width: 100px;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         color: white;
         text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, 0px 1px 0 #000, 1px 0px 0 #000;
     }
 
-    /* .countdown-container {
-        position: absolute;
-        width: 220px;
-        height: 130px;
-        top: 1px;
-        background-color: rgba(255, 255, 255, 0.15);
-        border-radius: 12px;
-        overflow: visible;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 700;
-        color: white;
-        text-shadow: 0 0 3px black;
-        clip-path: polygon(50% 25%, 70% 25%, 67% 32%, 65% 40%, 64% 47%, 64% 54%, 65% 62%, 67% 68%, 69% 74%, 72% 80%, 77% 87%, 
-        23% 87%, 28% 80%, 31% 74%, 33% 68%, 35% 61%, 36% 54%, 36% 47%, 35% 40%, 33% 32%, 
-        30% 25%);
-    }
-
-    .countdown-bar {
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        background-color: rgba(255, 255, 255, 0.7);
-        transition: height 1s linear;
-        border-radius: 12px 12px 0 0;
-        z-index: 2;
-    }
-
-    .countdown-top-shape {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        z-index: 2;
-        
-        
-    }
-
-    .countdown-text {
-        position: relative;
-        z-index: 3;
-        font-size: 20px;
-        user-select: none;
-    } */
-
-
     .otTime {
         position:absolute;
-        top: 38px;
-        text-shadow: 0 0 10px #ff0000;
-        font-size: 38px;
-        left: 438px;
-        width: 120px;
+        font-size: 36px;
+        top: 18px;
+        width: 100px;
+        height: 100px;
         display: flex;
         justify-content: center;
+        align-items: center;
+        color: white;
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, 0px 1px 0 #000, 1px 0px 0 #000, 0 0 6px #ff0000, 0 0 4px #ff0000;
+    }
+
+    .four-digit {
+      font-size: 30px;
+      margin-left: -3px;
     }
 
     .orange-logo {
@@ -374,6 +344,13 @@
         font-size: 12.5px;
         text-shadow: -1.6px -1.6px 0 rgba(0, 0, 0, 0.5), 1.6px -1.6px 0 rgba(0, 0, 0, 0.5), -1.6px 1.6px 0 rgba(0, 0, 0, 0.5), 1.6px 1.6px 0 rgba(0, 0, 0, 0.5);
         font-family: "Exo 2", sans-serif;
+    }
+
+    .ot-info {
+      position: absolute;
+      left: 307px;
+      top: -4px;
+      text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, 0px 1px 0 #000, 1px 0px 0 #000, 0 0 4px #ff0000, 0 0 4px #ff0000;
     }
 
     .bWinBoxContainer {

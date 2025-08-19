@@ -4,13 +4,16 @@
   "description": "Rocket League SOS Overlay and Control Panel",
   "main": "main.js",
   "scripts": {
-    "dev": "electron .",
-    "build": "electron-builder"
+    "dev": "concurrently \"npm:dev:overlay\" \"npm:dev:electron\"",
+    "dev:overlay": "cd Overlay && npm run dev",
+    "dev:electron": "wait-on tcp:1111 && set NODE_ENV=development && electron .",
+    "build": "electron-builder --win --dir"
   },
   "bin": "start.cjs",
   "author": "Dakota Carmer",
   "license": "MIT",
   "dependencies": {
+    "cross-env": "^10.0.0",
     "express": "^4.19.2",
     "open": "^9.1.0",
     "ws": "^8.18.3"
@@ -19,10 +22,11 @@
     "concurrently": "^8.2.2",
     "electron": "^37.2.5",
     "electron-builder": "^26.0.12",
-    "pkg": "^5.8.1",
-    "vite": "^5.2.0"
+    "electron-reload": "^2.0.0-alpha.1",
+    "vite": "^5.2.0",
+    "wait-on": "^8.0.4"
   },
-   "build": {
+  "build": {
     "appId": "com.rlss.overlay",
     "productName": "RLSS Overlay Launcher",
     "files": [
@@ -41,7 +45,8 @@
     ],
     "win": {
       "target": "portable",
-      "icon": "RLSS_Icon.ico"
+      "icon": "RLSS_Icon.ico",
+      "sign": false
     }
   },
   "engines": {

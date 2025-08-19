@@ -166,10 +166,6 @@
 
       {/if}
 
-      {#if $isOT}
-        <p transition:fade class="overtime">OT</p>
-      {/if}
-
       {#if $isReplay && !$postGameVisible}
         <div class="replayBorder">
           <p transition:fade class="replay">REPLAY</p>
@@ -291,7 +287,7 @@ li {
   position: relative;
   font-size: 20px;
   text-shadow: 0 0 5px #000000, 0 0 10px #000000, 0 0 3px #000000;
-  top: 16px;
+  top: 20px;
   font-family: "Exo 2", sans-serif;
   font-weight: 800;
   color: #ffffff;
@@ -305,7 +301,7 @@ li {
   position: relative;
   font-size: 25px;
   text-shadow: 0 0 5px #000000, 0 0 10px #000000, 0 0 3px #000000;
-  top: 16px;
+  top: 15px;
   font-family: "Exo 2", sans-serif;
   font-weight: 800;
   color: #ffffff;
@@ -319,7 +315,7 @@ li {
   position: relative;
   font-size: 25px;
   text-shadow: 0 0 5px #000000, 0 0 10px #000000, 0 0 3px #000000;
-  top: 16px;
+  top: 15px;
   font-family: "Exo 2", sans-serif;
   font-weight: 800;
   color: #ffffff;

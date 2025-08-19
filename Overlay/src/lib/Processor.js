@@ -79,25 +79,59 @@ export const teamsStore = derived(updateState, ($update, set) => {
 });
 
 // --- MVP Player ---
-const rawMvpPlayer = derived(updateState, ($update, set) => {
-  if ($update?.game?.hasTarget) {
-    const players = $update.players;
-    let best = null;
+export const winningTeamIndex = derived(
+  panelDataStore,
+  ($panel) => {
+    const blueWins = $panel?.blueWins ?? 0;
+    const orangeWins = $panel?.orangeWins ?? 0;
+    if (blueWins > orangeWins) return 0;
+    if (orangeWins > blueWins) return 1;
+    return null;
+  }
+);
 
+// Replace rawMvpPlayer with this logic
+const rawMvpPlayer = derived(
+  [updateState, winningTeamIndex],
+  ([$update, winningTeam], set) => {
+    if (!$update?.game?.hasTarget || winningTeam === null) {
+      set(null);
+      return;
+    }
+
+    const players = $update.players;
+    if (!players) {
+      set(null);
+      return;
+    }
+
+    // Find highest scoring player overall
+    let bestOverall = null;
     for (const id in players) {
-      const player = players[id];
-      if (!best || player.score > best.score) {
-        best = player;
+      const p = players[id];
+      if (!bestOverall || p.score > bestOverall.score) bestOverall = p;
+    }
+
+    // If best overall player is on winning team, set MVP as them
+    if (bestOverall?.team === winningTeam) {
+      set(bestOverall);
+      return;
+    }
+
+    // Otherwise, find highest scoring player on winning team
+    let bestOnWinningTeam = null;
+    for (const id in players) {
+      const p = players[id];
+      if (p.team === winningTeam && (!bestOnWinningTeam || p.score > bestOnWinningTeam.score)) {
+        bestOnWinningTeam = p;
       }
     }
 
-    set(best || null);
-  } else {
-    set(null);
+    set(bestOnWinningTeam || null);
   }
-});
+);
 
-// Persistent MVP store
+// Persistent MVP store, updated only when valid
 export const mvpPlayer = writable({});
 
 // Only update if the MVP data is valid
@@ -199,6 +233,8 @@ function sendPanelUpdate(message) {
 // --- Internal state ---
 let lastHandledGameId = null;
 let lastGameInit = 0;
+let lastHandledMatchEndId = null;
+let lastMatchEndTime = 0;
 let resetTimeout = null;
 const DEBOUNCE_MS = 3000;
 
@@ -342,8 +378,6 @@ socketMessageStore.subscribe(($msg) => {
     }, 4000);
   }
 
-  let lastHandledMatchEndId = null;
-  let lastMatchEndTime = 0;
 
   if ($msg.event === 'game:match_ended') {
     const now = Date.now();
