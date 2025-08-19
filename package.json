@@ -45,8 +45,7 @@
     ],
     "win": {
       "target": "portable",
-      "icon": "RLSS_Icon.ico",
-      "sign": false
+      "icon": "RLSS_Icon.ico"
     }
   },
   "engines": {
